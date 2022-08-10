@@ -1,10 +1,4 @@
 /*******************************************************************************
-Write a function `suffixCipher` that accepts a sentence and object as arguments.
-The object contains suffixes as keys and callbacks as values. The `suffixCipher`
-function should return a new sentence where words of the original sentence are
-modified according to the callback that corresponds with the suffix that the word
-ends with. If the word does not end in any of the suffix keys, then it should not
-be modified. You can assume that only one suffix of the object will match a word.
 
 Examples:
 
@@ -29,10 +23,29 @@ let cipher2 = {
 };
 console.log(suffixCipher('incremental progress is very instrumental', cipher2));
 // INCREMENTAL progressth isth very INSTRUMENTAL
+
+Write a function `suffixCipher` that accepts a sentence and object as arguments.
+The object contains suffixes as keys and callbacks as values. The `suffixCipher`
+function should return a new sentence where words of the original sentence are
+modified according to the callback that corresponds with the suffix that the word
+ends with. If the word does not end in any of the suffix keys, then it should not
+be modified. You can assume that only one suffix of the object will match a word.
+
+
 *******************************************************************************/
 
-let suffixCipher = function() {
-
+let suffixCipher = function(sentence, object) {
+    let words = sentence.split(" ")
+    let newWords = words.map(function (word) {
+        for (let key in object) {
+            if(word.endsWith(key)){
+                let cb = object[key]
+                return cb(word)
+            }
+        }
+        return word
+    })
+    return newWords.join(" ")
 };
 
 
