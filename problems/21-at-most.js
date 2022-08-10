@@ -1,8 +1,4 @@
 /*******************************************************************************
-Write a function `atMost` that accepts an array, a max number, and a callback as
-arguments. The function should return a boolean indicating whether or not there are
-at most (fewer than or equal to) `max` elements of the array that result in true
-when passed into the callback.
 
 Examples:
 
@@ -20,10 +16,20 @@ console.log(atMost(['boat', 'cat', 'car'], 1, startsWithA));                    
 console.log(atMost(['boat', 'cat', 'car', 'academy'], 1, startsWithA));         // true
 console.log(atMost(['boat', 'arc', 'cat', 'car', 'academy'], 1, startsWithA));  // false
 
+Write a function `atMost` that accepts an array, a max number, and a callback as
+arguments. The function should return a boolean indicating whether or not there are
+at most (fewer than or equal to) `max` elements of the array that result in true
+when passed into the callback.
+
 *******************************************************************************/
 
-let atMost = function() {
-
+let atMost = function(array, max, cb) {
+    let count = 0
+    for (let i = 0; i < array.length; i++){
+        let ele = array[i]
+        if(cb(ele)) count++
+    }
+    return count <= max
 };
 
 

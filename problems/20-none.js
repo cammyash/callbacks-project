@@ -1,9 +1,4 @@
 /*******************************************************************************
-Write a function `none` that accepts an array and a callback as arguments.
-The function should call the callback for each element of the array, passing in
-the element. The function should return true if all
-elements of the array result to false when passed into the callback. Otherwise,
-the method should return false.
 
 Examples:
 
@@ -26,10 +21,22 @@ let result4 = none([4, -5, 7, -1], function(n) {
     return n < 0;
 });
 console.log(result4);   // false
+
+Write a function `none` that accepts an array and a callback as arguments.
+The function should call the callback for each element of the array, passing in
+the element. The function should return true if all
+elements of the array result to false when passed into the callback. Otherwise,
+the method should return false.
+
 *******************************************************************************/
 
-let none = function() {
-
+let none = function(array, cb) {
+    for (let i = 0; i < array.length; i++){
+        if(cb(array[i]) === true){
+            return false
+        }
+    }
+    return true 
 };
 
 

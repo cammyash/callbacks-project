@@ -1,8 +1,4 @@
 /*******************************************************************************
-Write a function `firstIndex` that accepts an array and a callback as arguments.
-The function should return the index of the first element of the array that
-results in true when passed into the callback. If no elements of the array
-result in true, then the function should return -1.
 
 Examples:
 
@@ -20,10 +16,19 @@ let result3 = firstIndex(['canine', 'feline', 'tree'], function (s) {
     return s.length === 3;
 });
 console.log(result3); // -1
+
+Write a function `firstIndex` that accepts an array and a callback as arguments.
+The function should return the index of the first element of the array that
+results in true when passed into the callback. If no elements of the array
+result in true, then the function should return -1.
+
 *******************************************************************************/
 
-let firstIndex = function() {
-
+let firstIndex = function(array, cb) {
+    for(let i = 0; i < array.length; i++){
+        if(cb(array[i])) return i
+    }
+    return -1
 };
 
 
